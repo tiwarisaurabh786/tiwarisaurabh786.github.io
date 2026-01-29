@@ -22,30 +22,52 @@
         }
         .hover-lift { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .hover-lift:hover { transform: translateY(-12px) scale(1.02); }
+        /* Fixed Photo Hover Effect - Shine only, no image swap */
         .avatar-container {
             position: relative;
             overflow: hidden;
         }
-        .avatar-container img:first-child {
+        .avatar-container img {
             transition: all 0.6s ease;
         }
-        .avatar-container:hover img:first-child {
+        .avatar-container:hover img {
             transform: scale(1.1);
-            filter: brightness(1.2);
-            opacity: 0.3;
+            filter: brightness(1.1) saturate(1.2);
         }
-        .shine {
+        .photo-shine {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.6) 50%, transparent 70%);
-            transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            transition: all 0.6s;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+            transform: skew(-45deg);
+            transition: all 0.8s ease;
+            z-index: 5;
         }
-        .avatar-container:hover .shine {
-            transform: translateX(100%) translateY(100%) rotate(45deg);
+        .avatar-container:hover .photo-shine {
+            top: 100%;
+        }
+        /* Progress Bar Animation */
+        .skill-bar {
+            background: rgba(255,255,255,0.1);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 4px;
+            transition: width 2s ease-in-out;
+        }
+        .skill-item:hover .skill-progress {
+            animation: skillPulse 0.6s ease-in-out;
+        }
+        @keyframes skillPulse {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(1.05); }
         }
     </style>
 </head>
@@ -68,9 +90,9 @@
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
         <div class="max-w-5xl mx-auto text-center">
-            <!-- Profile Photo with Hover Effect -->
+            <!-- Fixed Profile Photo - Shine effect only -->
             <div class="avatar-container w-72 h-72 mx-auto mb-8 rounded-3xl glass p-4 shadow-2xl hover:shadow-4xl hover:scale-105 transition-all duration-700 ring-4 ring-indigo-500/30 relative overflow-hidden">
-                <div class="shine"></div>
+                <div class="photo-shine"></div>
                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=85" 
                      alt="Saurabh Tiwari - Java Full Stack Developer" 
                      class="w-full h-full rounded-3xl object-cover relative z-10">
@@ -176,47 +198,111 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Improved Skills Section -->
     <section id="skills" class="py-24 px-8 bg-white/5 backdrop-blur-xl rounded-4xl mx-12 -mt-12 shadow-2xl">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-5xl lg:text-6xl font-black mb-8 gradient-text">Professional Skills</h2>
+                <p class="text-xl text-slate-300 mb-12">Production-ready expertise with hands-on experience</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass p-8 rounded-3xl hover-lift text-center shadow-2xl">
-                    <i class="fas fa-server text-5xl text-indigo-400 mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-6 gradient-text">Backend</h3>
-                    <div class="space-y-2 text-lg text-slate-300">
-                        <div>Java • Spring Boot • REST APIs</div>
-                        <div>Microservices • Spring Security</div>
-                        <div>OAuth2 • JWT Authentication</div>
+            
+            <!-- Backend Skills -->
+            <div class="skill-item glass p-8 rounded-3xl hover-lift shadow-2xl mb-8">
+                <div class="flex items-center mb-6">
+                    <i class="fas fa-server text-4xl text-indigo-400 mr-4"></i>
+                    <h3 class="text-3xl font-bold gradient-text">Backend Development</h3>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-white">Spring Boot + REST APIs</span>
+                            <span class="text-indigo-300 font-bold">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-white">Microservices Architecture</span>
+                            <span class="text-indigo-300 font-bold">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-white">Spring Security + JWT</span>
+                            <span class="text-indigo-300 font-bold">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="glass p-8 rounded-3xl hover-lift text-center shadow-2xl">
-                    <i class="fab fa-react text-5xl text-cyan-400 mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-6 gradient-text">Frontend</h3>
-                    <div class="space-y-2 text-lg text-slate-300">
-                        <div>React.js • Tailwind CSS</div>
-                        <div>Thymeleaf • HTML5 • CSS3</div>
-                        <div>JavaScript • Daisy UI</div>
+            </div>
+
+            <!-- Frontend Skills -->
+            <div class="skill-item glass p-8 rounded-3xl hover-lift shadow-2xl mb-8">
+                <div class="flex items-center mb-6">
+                    <i class="fab fa-react text-4xl text-cyan-400 mr-4"></i>
+                    <h3 class="text-3xl font-bold gradient-text">Frontend Development</h3>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-white">React.js + Hooks</span>
+                            <span class="text-indigo-300 font-bold">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-white">Tailwind CSS + UI</span>
+                            <span class="text-indigo-300 font-bold">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="glass p-8 rounded-3xl hover-lift text-center shadow-2xl">
-                    <i class="fas fa-database text-5xl text-green-400 mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-6 gradient-text">Database</h3>
-                    <div class="space-y-2 text-lg text-slate-300">
-                        <div>MySQL • PostgreSQL</div>
-                        <div>MongoDB • Cloudinary</div>
-                        <div>Mailtrap Integration</div>
+            </div>
+
+            <!-- Database & DevOps -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="skill-item glass p-8 rounded-3xl hover-lift shadow-2xl">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-database text-4xl text-green-400 mr-4"></i>
+                        <h3 class="text-2xl font-bold gradient-text">Database</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 text-lg">
+                            <i class="fas fa-check-circle text-green-400"></i>
+                            <span>MySQL • PostgreSQL • MongoDB</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-lg">
+                            <i class="fas fa-check-circle text-green-400"></i>
+                            <span>Cloudinary • Mailtrap</span>
+                        </div>
                     </div>
                 </div>
-                <div class="glass p-8 rounded-3xl hover-lift text-center shadow-2xl">
-                    <i class="fas fa-cloud text-5xl text-purple-400 mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-6 gradient-text">DevOps</h3>
-                    <div class="space-y-2 text-lg text-slate-300">
-                        <div>AWS • Docker • Nginx</div>
-                        <div>Git • GitHub Actions</div>
-                        <div>Ollama/Phi LLM</div>
+                <div class="skill-item glass p-8 rounded-3xl hover-lift shadow-2xl">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-cloud text-4xl text-purple-400 mr-4"></i>
+                        <h3 class="text-2xl font-bold gradient-text">DevOps</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 text-lg">
+                            <i class="fas fa-check-circle text-green-400"></i>
+                            <span>AWS • Docker • Nginx</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-lg">
+                            <i class="fas fa-check-circle text-green-400"></i>
+                            <span>Git • GitHub Actions</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -338,8 +424,8 @@
                             <a href="https://leetcode.com/tiwarisaurabh786/" class="text-yellow-400 hover:text-white p-5 rounded-3xl hover:bg-white/20 transition-all duration-300 hover:scale-110" target="_blank">
                                 <i class="fab fa-leetcode"></i>
                             </a>
-                            <a href="https://linkedin.com/in/tiwarisaurabh786" class="text-blue-400 hover:text-white p-5 rounded-3xl hover:bg-white/20 transition-all duration-300 hover:scale-110" target="_blank">
-                                <i class="fab fa-linkedin"></i>
+                            <a href="https://leetcode.com/tiwarisaurabh786/" class="text-yellow-400 hover:text-white p-5 rounded-3xl hover:bg-white/20 transition-all duration-300 hover:scale-110" target="_blank">
+                                <i class="fas fa-chart-line"></i>
                             </a>
                         </div>
                         <div class="text-lg font-bold text-indigo-300 tracking-wide">
@@ -424,11 +510,21 @@
             }
         });
 
-        // Mobile menu toggle (if needed)
-        function toggleMobileMenu() {
-            const nav = document.querySelector('nav ul');
-            nav.classList.toggle('hidden');
-        }
+        // Animate skill bars on scroll
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bars = entry.target.querySelectorAll('.skill-progress');
+                    bars.forEach(bar => {
+                        bar.style.width = bar.style.width;
+                    });
+                }
+            });
+        });
+
+        document.querySelectorAll('.skill-item').forEach(item => {
+            skillObserver.observe(item);
+        });
     </script>
 </body>
 </html>
