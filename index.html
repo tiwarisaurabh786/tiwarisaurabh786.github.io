@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saurabh Tiwari - Java Full Stack Developer</title>
+    <title>Saurabh Tiwari - Java Full Stack Developer | MCA | SDE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -15,88 +15,195 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         .gradient-text { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .hover-lift { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .hover-lift:hover { transform: translateY(-10px) rotateX(5deg) rotateY(5deg); }
-        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        .hover-lift:hover { transform: translateY(-12px) scale(1.02); }
+        .avatar-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .avatar-container img:first-child { z-index: 20; }
+        .avatar-container img:last-child { 
+            z-index: 10; 
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .avatar-container:hover img:first-child { 
+            opacity: 0; 
+            transform: scale(1.1);
+        }
+        .avatar-container:hover img:last-child { 
+            opacity: 1; 
+            transform: scale(1);
+        }
+        .shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 1s;
+        }
+        .avatar-container:hover .shine { left: 100%; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white overflow-x-hidden">
-    
-    <!-- Animated Particles Background -->
-    <canvas id="particles" class="particles"></canvas>
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 min-h-screen text-white overflow-x-hidden">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass py-4 px-6">
+    <nav class="fixed w-full z-50 glass py-4 px-8 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="text-3xl font-black gradient-text">ST</div>
-            <ul class="hidden md:flex space-x-8">
-                <li><a href="#about" class="text-lg hover:text-white transition-all duration-300">About</a></li>
-                <li><a href="#skills" class="text-lg hover:text-white transition-all duration-300">Skills</a></li>
-                <li><a href="#projects" class="text-lg hover:text-white transition-all duration-300">Projects</a></li>
-                <li><a href="#contact" class="text-lg hover:text-white transition-all duration-300">Contact</a></li>
+            <div class="text-3xl font-black gradient-text">Saurabh Tiwari</div>
+            <ul class="hidden lg:flex space-x-12">
+                <li><a href="#home" class="text-lg hover:text-white font-medium transition-all duration-300">Home</a></li>
+                <li><a href="#about" class="text-lg hover:text-white font-medium transition-all duration-300">About</a></li>
+                <li><a href="#skills" class="text-lg hover:text-white font-medium transition-all duration-300">Skills</a></li>
+                <li><a href="#projects" class="text-lg hover:text-white font-medium transition-all duration-300">Projects</a></li>
+                <li><a href="#contact" class="text-lg hover:text-white font-medium transition-all duration-300">Contact</a></li>
             </ul>
+            <button class="lg:hidden text-2xl" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden fixed top-16 w-full bg-indigo-900/95 backdrop-blur-xl z-40">
+        <ul class="px-8 py-6 space-y-4">
+            <li><a href="#about" class="block py-2 text-xl hover:text-indigo-300">About</a></li>
+            <li><a href="#skills" class="block py-2 text-xl hover:text-indigo-300">Skills</a></li>
+            <li><a href="#projects" class="block py-2 text-xl hover:text-indigo-300">Projects</a></li>
+            <li><a href="#contact" class="block py-2 text-xl hover:text-indigo-300">Contact</a></li>
+        </ul>
+    </div>
+
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
-        <div class="text-center max-w-4xl mx-auto">
-            <!-- Profile Image with Glow -->
-            <div class="w-64 h-64 mx-auto mb-12 rounded-3xl glass p-2 shadow-2xl hover:shadow-4xl transition-all duration-500 hover:scale-105">
-                <img src="https://avatars.githubusercontent.com/u/tiwarisaurabh786" alt="Saurabh Tiwari" class="w-full h-full rounded-3xl object-cover">
+    <section id="home" class="min-h-screen flex items-center justify-center pt-24 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <!-- ✨ DOUBLE PHOTO TWINKLE MAGIC ✨ -->
+            <div class="avatar-container w-80 h-80 mx-auto mb-16 rounded-3xl glass p-6 shadow-2xl hover:shadow-4xl hover:scale-[1.05] transition-all duration-700 ring-8 ring-indigo-500/20 relative overflow-hidden group">
+                <!-- Professional Photo (Default) -->
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=350&h=350&q=85" 
+                     alt="Saurabh Tiwari Professional" 
+                     class="w-full h-full rounded-3xl object-cover absolute inset-0 transition-all duration-1000">
+                
+                <!-- GitHub Avatar (Hover Effect) -->
+                <img src="https://avatars.githubusercontent.com/u/tiwarisaurabh786?v=4" 
+                     alt="Saurabh Tiwari GitHub" 
+                     class="w-full h-full rounded-3xl object-cover absolute inset-0 transition-all duration-1000 hover:brightness-110">
+                
+                <!-- ✨ Shine Effect -->
+                <div class="shine"></div>
+                
+                <!-- Glow Ring -->
+                <div class="absolute inset-0 rounded-3xl bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl animate-ping"></div>
             </div>
             
-            <h1 class="text-6xl md:text-8xl font-black mb-6 opacity-0 animate-fadeInUp">Saurabh Tiwari</h1>
-            <h2 class="text-2xl md:text-4xl font-bold mb-8 text-slate-300 opacity-0 animate-fadeInUp animation-delay-200">Java Full Stack Developer</h2>
-            <p class="text-xl md:text-2xl mb-12 text-slate-400 max-w-2xl mx-auto leading-relaxed opacity-0 animate-fadeInUp animation-delay-400">
-                MCA | 400+ LeetCode (Global Rank 200K) | Spring Boot + React + AWS
+            <h1 class="text-7xl lg:text-8xl font-black mb-6 opacity-0 animate-fadeInUp gradient-text tracking-tight">SAURABH TIWARI</h1>
+            <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-indigo-100 opacity-0 animate-fadeInUp animation-delay-200">
+                Java Full Stack Developer | MCA | LeetCode Global Rank 200K
+            </h2>
+            <p class="text-xl lg:text-2xl mb-12 text-slate-300 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fadeInUp animation-delay-400">
+                400+ LeetCode problems solved | Spring Boot + React + AWS + Docker | 
+                Scaled servers for 10K concurrent users | Ready for SDE roles across India
             </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center opacity-0 animate-fadeInUp animation-delay-600">
-                <a href="https://github.com/tiwarisaurabh786" class="glass px-12 py-6 rounded-3xl font-bold text-xl hover-lift shadow-2xl hover:shadow-purple-500/25">
-                    <i class="fab fa-github mr-3"></i>GitHub
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center opacity-0 animate-fadeInUp animation-delay-600">
+                <a href="https://github.com/tiwarisaurabh786" target="_blank" 
+                   class="glass px-12 py-6 rounded-3xl font-bold text-xl hover-lift shadow-2xl hover:shadow-indigo-500/50 text-white flex items-center space-x-3">
+                    <i class="fab fa-github text-2xl"></i>
+                    <span>View GitHub</span>
                 </a>
-                <a href="mailto:tiwarisoravvkagmail.com" class="bg-gradient-to-r from-indigo-500 to-purple-600 px-12 py-6 rounded-3xl font-bold text-xl hover-lift shadow-2xl hover:shadow-indigo-500/50">
-                    Hire Me
+                <a href="mailto:tiwarisoravvkagmail.com" 
+                   class="bg-gradient-to-r from-indigo-500 to-purple-600 px-12 py-6 rounded-3xl font-bold text-xl hover-lift shadow-2xl hover:shadow-indigo-500/50 flex items-center space-x-3">
+                    <i class="fas fa-envelope text-2xl"></i>
+                    <span>Hire Me</span>
+                </a>
+                <a href="https://leetcode.com/tiwarisaurabh786/" target="_blank" 
+                   class="glass px-12 py-6 rounded-3xl font-bold text-xl hover-lift shadow-2xl hover:shadow-yellow-500/50 text-white flex items-center space-x-3">
+                    <i class="fab fa-leetcode text-2xl text-yellow-400"></i>
+                    <span>LeetCode</span>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-32 px-6">
-        <div class="max-w-6xl mx-auto">
+    <section id="about" class="py-32 px-8">
+        <div class="max-w-7xl mx-auto">
             <div class="text-center mb-24">
-                <h2 class="text-5xl md:text-7xl font-black gradient-text mb-6">About Me</h2>
-                <p class="text-2xl text-slate-400 max-w-3xl mx-auto">Building scalable full-stack applications that drive real business impact</p>
+                <h2 class="text-6xl lg:text-7xl font-black mb-8 gradient-text">About Saurabh</h2>
+                <p class="text-2xl text-slate-300 max-w-4xl mx-auto">MCA Graduate passionate about building scalable full-stack applications with modern technologies</p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <!-- Left - Stats -->
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Education Timeline -->
                 <div class="space-y-8">
-                    <div class="glass p-10 rounded-3xl hover-lift">
-                        <div class="text-4xl font-black gradient-text mb-4">400+</div>
-                        <div class="text-xl text-slate-300">LeetCode Problems</div>
-                        <div class="text-lg text-slate-400">Global Rank 200K</div>
+                    <div class="glass p-10 rounded-3xl hover-lift shadow-2xl">
+                        <h3 class="text-3xl font-bold mb-8 gradient-text flex items-center">
+                            <i class="fas fa-graduation-cap mr-4 text-3xl"></i>Academic Qualifications
+                        </h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-6 p-6 bg-white/5 rounded-2xl border-l-4 border-indigo-400">
+                                <div class="w-3 h-3 bg-indigo-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <div>
+                                    <h4 class="text-2xl font-bold text-white mb-2">MCA - Master of Computer Applications</h4>
+                                    <p class="text-indigo-100 text-lg mb-1">Institute of Management Education, Sahibabad</p>
+                                    <p class="text-slate-300 text-xl font-semibold">7.2 CGPA | 2023 - 2025</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-6 p-6 bg-white/5 rounded-2xl border-l-4 border-green-400">
+                                <div class="w-3 h-3 bg-green-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <div>
+                                    <h4 class="text-2xl font-bold text-white mb-2">Diploma in Computer Science Engineering</h4>
+                                    <p class="text-indigo-100 text-lg mb-1">Guru Nanak Dev Institute of Technology</p>
+                                    <p class="text-slate-300 text-xl font-semibold">8.2 CGPA | 2018 - 2021</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-6 p-6 bg-white/5 rounded-2xl border-l-4 border-blue-400">
+                                <div class="w-3 h-3 bg-blue-400 rounded-full mt-3 flex-shrink-0"></div>
+                                <div>
+                                    <h4 class="text-2xl font-bold text-white mb-2">B.Com (Honours)</h4>
+                                    <p class="text-indigo-100 text-lg mb-1">University of Delhi</p>
+                                    <p class="text-slate-300 text-xl font-semibold">6.5 CGPA | 2015 - 2018</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="glass p-10 rounded-3xl hover-lift">
-                        <div class="text-4xl font-black gradient-text mb-4">10K</div>
-                        <div class="text-xl text-slate-300">Concurrent Users</div>
-                        <div class="text-lg text-slate-400">Server Capacity</div>
+
+                    <!-- Achievements -->
+                    <div class="glass p-10 rounded-3xl hover-lift shadow-2xl grid grid-cols-2 gap-8">
+                        <div class="text-center group">
+                            <div class="text-5xl lg:text-6xl font-black gradient-text mb-6 group-hover:scale-110 transition-transform">400+</div>
+                            <div class="text-2xl text-slate-300 mb-2">LeetCode Problems</div>
+                            <div class="text-xl font-bold text-indigo-400">Global Rank 200K</div>
+                        </div>
+                        <div class="text-center group">
+                            <div class="text-5xl lg:text-6xl font-black text-green-400 mb-6 group-hover:scale-110 transition-transform">10,000</div>
+                            <div class="text-2xl text-slate-300 mb-2">Concurrent Users</div>
+                            <div class="text-xl font-bold text-green-400">Server Capacity</div>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Right - Info -->
-                <div class="space-y-6">
-                    <div class="glass p-8 rounded-3xl">
-                        <h3 class="text-3xl font-bold mb-6 gradient-text">Education</h3>
-                        <div class="space-y-4 text-lg">
-                            <div><i class="fas fa-graduation-cap text-indigo-400 mr-4"></i>MCA - 7.2 CGPA (2025)</div>
-                            <div><i class="fas fa-university text-indigo-400 mr-4"></i>B.Com Hons - University of Delhi</div>
+
+                <!-- Professional Summary -->
+                <div class="glass p-12 rounded-3xl hover-lift shadow-2xl border border-white/20">
+                    <blockquote class="text-3xl lg:text-4xl font-light italic text-slate-200 mb-12 leading-relaxed">
+                        "Java Full Stack Developer with hands-on experience building, deploying, and optimizing scalable applications 
+                        using Spring Boot, REST APIs, Docker, AWS, and React. Strong track record of delivering production-ready 
+                        solutions that drive measurable business impact."
+                    </blockquote>
+                    <div class="flex items-center space-x-6 pt-8 border-t border-white/20">
+                        <div class="w-24 h-24 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl flex items-center justify-center text-3xl font-black text-white shadow-2xl">
+                            ST
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-bold text-white mb-1">Saurabh Tiwari</h4>
+                            <p class="text-2xl text-indigo-300">Full Stack Developer | SDE Aspirant</p>
+                            <p class="text-lg text-slate-400">Ghaziabad, Delhi NCR</p>
                         </div>
                     </div>
                 </div>
@@ -105,179 +212,123 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-32 px-6 bg-white/5 backdrop-blur-xl rounded-3xl mx-8 -mt-12">
-        <div class="max-w-6xl mx-auto">
+    <section id="skills" class="py-32 px-8 bg-white/5 backdrop-blur-xl rounded-4xl mx-12 -mt-20 shadow-2xl border border-white/20">
+        <div class="max-w-7xl mx-auto">
             <div class="text-center mb-24">
-                <h2 class="text-5xl md:text-7xl font-black gradient-text mb-6">Tech Stack</h2>
+                <h2 class="text-6xl lg:text-7xl font-black mb-8 gradient-text">Professional Skills</h2>
+                <p class="text-xl text-slate-400 max-w-3xl mx-auto">Production-ready technologies powering scalable applications</p>
             </div>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="glass p-8 rounded-3xl hover-lift text-center">
-                    <i class="fas fa-server text-5xl text-indigo-400 mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-4">Backend</h3>
-                    <div class="text-lg text-slate-300">Java, Spring Boot, REST APIs</div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass p-12 rounded-4xl hover-lift text-center shadow-2xl border border-indigo-500/30 group">
+                    <i class="fas fa-server text-7xl text-indigo-400 mb-8 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-3xl font-bold mb-8 gradient-text">Backend Development</h3>
+                    <div class="space-y-3 text-xl text-slate-300">
+                        <div><i class="fab fa-java text-orange-400 mr-3"></i>Java • Spring Boot • REST APIs</div>
+                        <div><i class="fas fa-cogs text-purple-400 mr-3"></i>Microservices • Spring Security</div>
+                        <div><i class="fas fa-key text-red-400 mr-3"></i>OAuth2 • JWT Authentication</div>
+                    </div>
                 </div>
-                <div class="glass p-8 rounded-3xl hover-lift text-center">
-                    <i class="fab fa-react text-5xl text-cyan-400 mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-4">Frontend</h3>
-                    <div class="text-lg text-slate-300">React, Tailwind, Thymeleaf</div>
+                <div class="glass p-12 rounded-4xl hover-lift text-center shadow-2xl border border-cyan-500/30 group">
+                    <i class="fab fa-react text-7xl text-cyan-400 mb-8 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-3xl font-bold mb-8 gradient-text">Frontend Development</h3>
+                    <div class="space-y-3 text-xl text-slate-300">
+                        <div><i class="fab fa-react text-cyan-400 mr-3"></i>React.js • Tailwind CSS</div>
+                        <div><i class="fab fa-html5 text-orange-400 mr-3"></i>Thymeleaf • HTML5 • CSS3</div>
+                        <div><i class="fab fa-js-square text-yellow-400 mr-3"></i>JavaScript • Daisy UI</div>
+                    </div>
                 </div>
-                <div class="glass p-8 rounded-3xl hover-lift text-center">
-                    <i class="fas fa-database text-5xl text-green-400 mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-4">Database</h3>
-                    <div class="text-lg text-slate-300">MySQL, PostgreSQL, MongoDB</div>
+                <div class="glass p-12 rounded-4xl hover-lift text-center shadow-2xl border border-green-500/30 group">
+                    <i class="fas fa-database text-7xl text-green-400 mb-8 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-3xl font-bold mb-8 gradient-text">Database & Storage</h3>
+                    <div class="space-y-3 text-xl text-slate-300">
+                        <div><i class="fas fa-database text-blue-400 mr-3"></i>MySQL • PostgreSQL</div>
+                        <div><i class="fas fa-cloud text-gray-400 mr-3"></i>MongoDB • Cloudinary</div>
+                        <div><i class="fas fa-envelope text-pink-400 mr-3"></i>Mailtrap Integration</div>
+                    </div>
                 </div>
-                <div class="glass p-8 rounded-3xl hover-lift text-center">
-                    <i class="fas fa-cloud text-5xl text-purple-400 mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-4">DevOps</h3>
-                    <div class="text-lg text-slate-300">AWS, Docker, Git</div>
+                <div class="glass p-12 rounded-4xl hover-lift text-center shadow-2xl border border-purple-500/30 group">
+                    <i class="fas fa-cloud text-7xl text-purple-400 mb-8 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-3xl font-bold mb-8 gradient-text">DevOps & Tools</h3>
+                    <div class="space-y-3 text-xl text-slate-300">
+                        <div><i class="fab fa-aws text-orange-400 mr-3"></i>AWS • Docker • Nginx</div>
+                        <div><i class="fab fa-git-alt text-orange-500 mr-3"></i>Git • GitHub Actions</div>
+                        <div><i class="fas fa-robot text-pink-400 mr-3"></i>Ollama/Phi LLM</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-32 px-6">
-        <div class="max-w-6xl mx-auto">
+    <section id="projects" class="py-32 px-8">
+        <div class="max-w-7xl mx-auto">
             <div class="text-center mb-24">
-                <h2 class="text-5xl md:text-7xl font-black gradient-text mb-6">Featured Projects</h2>
+                <h2 class="text-6xl lg:text-7xl font-black mb-8 gradient-text">Featured Projects</h2>
+                <p class="text-2xl text-slate-300 max-w-4xl mx-auto">Production-ready full-stack applications demonstrating enterprise-grade development</p>
             </div>
+            
             <div class="grid md:grid-cols-2 gap-12">
                 <!-- Task Board Lite -->
-                <div class="group glass p-10 rounded-3xl hover-lift shadow-2xl hover:shadow-4xl hover:shadow-purple-500/25 transition-all duration-500 cursor-pointer">
-                    <div class="w-full h-48 bg-gradient-to-br from-indigo-500/30 to-purple-500/30 rounded-2xl mb-6 group-hover:scale-105 transition-transform duration-300"></div>
-                    <h3 class="text-3xl font-black mb-4 gradient-text group-hover:translate-x-2 transition-transform">Task Board Lite</h3>
-                    <p class="text-xl text-slate-300 mb-6">Full-stack task management app with drag-drop boards</p>
-                    <a href="https://github.com/tiwarisaurabh786/Task_Board_Lite/" target="_blank" class="inline-flex items-center bg-white/20 backdrop-blur-sm px-8 py-4 rounded-2xl font-bold hover:bg-white/30 transition-all">
-                        <i class="fab fa-github mr-3"></i>View Project
-                    </a>
+                <div class="group glass p-10 rounded-4xl hover-lift shadow-2xl hover:shadow-indigo-500/40 transition-all duration-700 cursor-pointer border border-white/20">
+                    <div class="w-full h-60 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-3xl mb-8 group-hover:scale-105 transition-all duration-700 flex items-center justify-center p-12">
+                        <div class="text-center">
+                            <i class="fas fa-tasks text-8xl text-white/30 mb-6"></i>
+                            <div class="text-3xl font-bold text-white/60">Drag & Drop</div>
+                            <div class="text-xl text-white/40">Task Management</div>
+                        </div>
+                    </div>
+                    <h3 class="text-4xl font-black mb-6 gradient-text group-hover:translate-x-4 transition-all duration-700">Task Board Lite</h3>
+                    <p class="text-xl text-slate-300 mb-8 leading-relaxed">Modern Trello-inspired task management application featuring drag & drop boards, real-time collaboration, and responsive design across all devices.</p>
+                    <div class="flex items-center justify-between">
+                        <a href="https://github.com/tiwarisaurabh786/Task_Board_Lite/" target="_blank" 
+                           class="bg-gradient-to-r from-indigo-500 to-purple-600 px-10 py-5 rounded-3xl font-bold text-xl hover:shadow-2xl transition-all group-hover:translate-x-4 flex items-center space-x-3">
+                            <i class="fab fa-github text-2xl"></i>
+                            <span>Live Repository</span>
+                        </a>
+                        <div class="text-2xl text-indigo-400 font-bold bg-indigo-500/20 px-6 py-3 rounded-2xl">⭐ Latest</div>
+                    </div>
                 </div>
 
                 <!-- AI Resume Builder -->
-                <div class="group glass p-10 rounded-3xl hover-lift shadow-2xl hover:shadow-4xl hover:shadow-indigo-500/25 transition-all duration-500 cursor-pointer">
-                    <div class="w-full h-48 bg-gradient-to-br from-green-500/30 to-emerald-500/30 rounded-2xl mb-6 group-hover:scale-105 transition-transform duration-300"></div>
-                    <h3 class="text-3xl font-black mb-4 gradient-text group-hover:translate-x-2 transition-transform">AI Resume Builder</h3>
-                    <p class="text-xl text-slate-300 mb-6">Spring Boot + Ollama LLM | +30% accuracy improvement</p>
-                    <a href="https://github.com/tiwarisaurabh786" target="_blank" class="inline-flex items-center bg-white/20 backdrop-blur-sm px-8 py-4 rounded-2xl font-bold hover:bg-white/30 transition-all">
-                        <i class="fab fa-github mr-3"></i>View Project
+                <div class="group glass p-10 rounded-4xl hover-lift shadow-2xl hover:shadow-emerald-500/40 transition-all duration-700 cursor-pointer border border-white/20">
+                    <div class="w-full h-60 bg-gradient-to-br from-emerald-500/20 to-green-500/20 rounded-3xl mb-8 group-hover:scale-105 transition-all duration-700 flex items-center justify-center p-12">
+                        <div class="text-center">
+                            <i class="fas fa-robot text-8xl text-white/30 mb-6"></i>
+                            <div class="text-3xl font-bold text-white/60">AI Powered</div>
+                            <div class="text-xl text-white/40">Resume Generation</div>
+                        </div>
+                    </div>
+                    <h3 class="text-4xl font-black mb-6 gradient-text group-hover:translate-x-4 transition-all duration-700">AI Resume Builder</h3>
+                    <p class="text-xl text-slate-300 mb-8 leading-relaxed">Intelligent resume generator powered by Spring Boot + Ollama LLM. Achieved 30% higher accuracy and 20% fewer user errors through ATS-optimized formatting and validation.</p>
+                    <a href="https://github.com/tiwarisaurabh786" target="_blank" 
+                       class="bg-gradient-to-r from-emerald-500 to-green-600 px-10 py-5 rounded-3xl font-bold text-xl hover:shadow-2xl transition-all w-full text-center group-hover:translate-y-2">
+                        <i class="fab fa-github text-2xl mr-3"></i>View Project
                     </a>
                 </div>
 
-                <!-- Event Management -->
-                <div class="group md:col-span-2 glass p-10 rounded-3xl hover-lift shadow-2xl hover:shadow-4xl hover:shadow-cyan-500/25 transition-all duration-500 cursor-pointer">
-                    <div class="w-full h-64 bg-gradient-to-br from-cyan-500/30 to-blue-500/30 rounded-2xl mb-6 group-hover:scale-105 transition-transform duration-300"></div>
-                    <h3 class="text-4xl font-black mb-6 gradient-text group-hover:translate-x-2 transition-transform">Student Event Management System</h3>
-                    <p class="text-2xl text-slate-300 mb-8">Complete full-stack solution with real-time seat tracking, advanced search & role-based access</p>
-                    <div class="flex gap-4">
-                        <a href="https://github.com/tiwarisaurabh786" target="_blank" class="bg-gradient-to-r from-indigo-500 to-purple-600 px-10 py-5 rounded-2xl font-bold hover:shadow-2xl transition-all">
-                            <i class="fab fa-github mr-3"></i>GitHub
-                        </a>
-                        <div class="bg-white/20 backdrop-blur-sm px-8 py-5 rounded-2xl font-bold text-slate-300">
-                            Spring Boot + React + PostgreSQL
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-32 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-5xl md:text-7xl font-black gradient-text mb-12">Let's Work Together</h2>
-            <div class="glass p-16 rounded-3xl max-w-2xl mx-auto mb-12">
-                <div class="grid md:grid-cols-2 gap-12 text-2xl">
-                    <div>
-                        <div class="flex items-center justify-center mb-6">
-                            <i class="fas fa-envelope text-3xl text-indigo-400 mr-4"></i>
-                            <div>
-                                <div class="font-bold">Email</div>
-                                <a href="mailto:tiwarisoravvkagmail.com" class="text-slate-300 hover:text-white">tiwarisoravvkagmail.com</a>
+                <!-- Student Event Management - FEATURED PROJECT -->
+                <div class="md:col-span-2 group glass p-16 rounded-[3rem] hover-lift shadow-2xl hover:shadow-cyan-500/50 transition-all duration-1000 cursor-pointer border-2 border-white/30 bg-white/5 backdrop-blur-xl">
+                    <div class="grid lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <div class="w-full h-[28rem] bg-gradient-to-br from-cyan-500/30 via-blue-500/20 to-indigo-500/30 rounded-3xl mb-12 group-hover:scale-105 transition-all duration-700 flex items-center justify-center p-16 relative overflow-hidden">
+                                <div class="text-center z-10 relative">
+                                    <i class="fas fa-calendar-check text-[10rem] text-white/40 mb-12"></i>
+                                    <div class="text-5xl font-black text-white/70 mb-4">Real-time</div>
+                                    <div class="text-4xl font-bold text-white/50">Event Management</div>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-y-6 animate-shimmer"></div>
                             </div>
                         </div>
-                        <div class="flex items-center justify-center">
-                            <i class="fas fa-phone text-3xl text-green-400 mr-4"></i>
-                            <div>
-                                <div class="font-bold">Phone</div>
-                                <a href="tel:+919891496952" class="text-slate-300 hover:text-white">+91 9891496952</a>
+                        <div class="lg:pl-12">
+                            <div class="mb-8 pb-8 border-b-2 border-white/20">
+                                <span class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 bg-opacity-20 text-cyan-200 px-8 py-4 rounded-2xl text-2xl font-bold mb-6 border-2 border-cyan-400/50">
+                                    🔥 Featured Project
+                                </span>
+                                <h3 class="text-6xl lg:text-7xl font-black mb-8 gradient-text group-hover:translate-x-6 transition-all duration-700">Student Event Management System</h3>
                             </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-center space-x-8 text-3xl">
-                            <a href="https://github.com/tiwarisaurabh786" class="text-indigo-400 hover:text-white p-4 rounded-2xl hover:bg-white/20 transition-all"><i class="fab fa-github"></i></a>
-                            <a href="https://leetcode.com/tiwarisaurabh786/" class="text-yellow-400 hover:text-white p-4 rounded-2xl hover:bg-white/20 transition-all"><i class="fab fa-leetcode"></i></a>
-                            <a href="https://linkedin.com/in/tiwarisaurabh786" class="text-blue-400 hover:text-white p-4 rounded-2xl hover:bg-white/20 transition-all"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p class="text-xl text-slate-400">Open to Full Stack Developer, SDE, Backend & Cloud opportunities 🚀</p>
-        </div>
-    </section>
-
-    <script>
-        // Particles Animation
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const particles = [];
-        for(let i = 0; i < 100; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                radius: Math.random() * 2 + 1
-            });
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(99, 102, 241, 0.3)';
-                ctx.fill();
-                
-                p.x += p.vx;
-                p.y += p.vy;
-                
-                if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
-            });
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-        // Fade In Animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        });
-
-        document.querySelectorAll('.animate-fadeInUp').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(50px)';
-            el.style.transition = 'all 0.8s ease';
-            observer.observe(el);
-        });
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+                            <p class="text-2xl text-slate-200 mb-12 leading-relaxed">Enterprise-grade full-stack platform featuring real-time seat availability tracking, advanced search & filtering by category/date/seats, role-based access control (Admin/Student), and fully responsive UI optimized for cross-device accessibility.</p>
+                            
+                            <div class="flex flex-wrap gap-4 mb-12">
+                                <span class="bg-indigo-500/30 backdrop-blur-sm px-8 py-4 rounded-3xl text-2xl font-bold border-2 border-indigo-400/50">Spring Boot Backend</span>
+                                <span class="bg-cyan-500/30 backdrop-blur-sm px-8 py-4 rounded-3xl text-2xl font-bold border-2 border-cyan-400/50">React Frontend</span>
+                                <span class="bg-green-500/30 backdrop-blur-sm px-8 py-4 rounded-3xl text-2xl font-bold
