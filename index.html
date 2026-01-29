@@ -69,6 +69,38 @@
             0%, 100% { transform: scaleX(1); }
             50% { transform: scaleX(1.05); }
         }
+        /* Floating animation */
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Light sweep animation */
+.photo-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 25%,
+    rgba(255,255,255,0.45) 45%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  animation: shine 4s ease-in-out infinite;
+  z-index: 20;
+}
+
+@keyframes shine {
+  0%   { transform: translateX(-120%); }
+  50%  { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
+}
+
     </style>
 </head>
 <body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 min-h-screen text-white overflow-x-hidden">
@@ -91,13 +123,26 @@
     <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
         <div class="max-w-5xl mx-auto text-center">
             <!-- Fixed Profile Photo - Shine effect only -->
-            <div class="avatar-container w-72 h-72 mx-auto mb-8 rounded-3xl glass p-4 shadow-2xl hover:shadow-4xl hover:scale-105 transition-all duration-700 ring-4 ring-indigo-500/30 relative overflow-hidden">
-                <div class="photo-shine"></div>
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=85" 
-                     alt="Saurabh Tiwari - Java Full Stack Developer" 
-                     class="w-full h-full rounded-3xl object-cover relative z-10">
-            </div>
-            
+         <div class="avatar-container w-72 h-72 mx-auto mb-8 rounded-3xl glass p-4 shadow-2xl 
+            hover:scale-105 transition-all duration-700 
+            ring-4 ring-indigo-500/30 relative overflow-hidden">
+    
+    <!-- Light sweep -->
+    <div class="photo-shine"></div>
+
+    <!-- Glow background -->
+    <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr 
+                from-indigo-500/30 via-purple-500/20 to-cyan-400/30 
+                blur-2xl opacity-70 animate-pulse"></div>
+
+    <!-- PROFILE IMAGE -->
+    <img 
+        src="https://raw.githubusercontent.com/tiwarisaurabh786/tiwarisaurabh786.github.io/main/assets/profile_sorav.jpg"
+        alt="Saurabh Tiwari - Java Full Stack Developer"
+        class="w-full h-full rounded-3xl object-cover relative z-10 
+               animate-float shadow-[0_25px_60px_rgba(99,102,241,0.45)]">
+</div>
+
             <h1 class="text-6xl lg:text-7xl font-black mb-6 opacity-0 animate-fadeInUp gradient-text">SAURABH TIWARI</h1>
             <h2 class="text-2xl lg:text-3xl font-bold mb-8 text-indigo-100 opacity-0 animate-fadeInUp animation-delay-200">
                 Java Full Stack Developer | MCA | LeetCode Global Rank 200K
