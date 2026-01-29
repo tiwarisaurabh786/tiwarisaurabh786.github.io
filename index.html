@@ -22,9 +22,34 @@
         }
         .hover-lift { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .hover-lift:hover { transform: translateY(-12px) scale(1.02); }
+        .avatar-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .avatar-container img:first-child {
+            transition: all 0.6s ease;
+        }
+        .avatar-container:hover img:first-child {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+            opacity: 0.3;
+        }
+        .shine {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.6) 50%, transparent 70%);
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: all 0.6s;
+        }
+        .avatar-container:hover .shine {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 min-h-screen text-white">
+<body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 min-h-screen text-white overflow-x-hidden">
 
     <!-- Navbar -->
     <nav class="fixed w-full z-50 glass py-4 px-8 backdrop-blur-xl">
@@ -41,20 +66,21 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-24 px-6">
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
         <div class="max-w-5xl mx-auto text-center">
-            <!-- Profile Photo - Professional Developer -->
-            <div class="w-72 h-72 mx-auto mb-12 rounded-3xl glass p-4 shadow-2xl hover:shadow-4xl hover:scale-105 transition-all duration-700 ring-4 ring-indigo-500/30">
+            <!-- Profile Photo with Hover Effect -->
+            <div class="avatar-container w-72 h-72 mx-auto mb-8 rounded-3xl glass p-4 shadow-2xl hover:shadow-4xl hover:scale-105 transition-all duration-700 ring-4 ring-indigo-500/30 relative overflow-hidden">
+                <div class="shine"></div>
                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=85" 
                      alt="Saurabh Tiwari - Java Full Stack Developer" 
-                     class="w-full h-full rounded-3xl object-cover hover:brightness-110 transition-all duration-500">
+                     class="w-full h-full rounded-3xl object-cover relative z-10">
             </div>
             
-            <h1 class="text-7xl lg:text-8xl font-black mb-6 opacity-0 animate-fadeInUp gradient-text">SAURABH TIWARI</h1>
-            <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-indigo-100 opacity-0 animate-fadeInUp animation-delay-200">
+            <h1 class="text-6xl lg:text-7xl font-black mb-6 opacity-0 animate-fadeInUp gradient-text">SAURABH TIWARI</h1>
+            <h2 class="text-2xl lg:text-3xl font-bold mb-8 text-indigo-100 opacity-0 animate-fadeInUp animation-delay-200">
                 Java Full Stack Developer | MCA | LeetCode Global Rank 200K
             </h2>
-            <p class="text-2xl mb-12 text-slate-300 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fadeInUp animation-delay-400">
+            <p class="text-xl mb-12 text-slate-300 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fadeInUp animation-delay-400">
                 400+ LeetCode problems solved | Spring Boot + React + AWS + Docker | 
                 Scaled servers for 10K concurrent users | Ready for SDE roles
             </p>
@@ -72,25 +98,25 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-32 px-8">
+    <section id="about" class="py-24 px-8">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-24">
-                <h2 class="text-6xl lg:text-7xl font-black mb-8 gradient-text">About Saurabh</h2>
-                <p class="text-2xl text-slate-300 max-w-4xl mx-auto">Full Stack Developer passionate about building scalable applications with modern tech stack</p>
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-6xl font-black mb-8 gradient-text">About Saurabh</h2>
+                <p class="text-xl text-slate-300 max-w-4xl mx-auto">Full Stack Developer passionate about building scalable applications with modern tech stack</p>
             </div>
             
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Education Timeline -->
-                <div class="space-y-8">
-                    <div class="glass p-10 rounded-3xl hover-lift shadow-2xl">
-                        <h3 class="text-3xl font-bold mb-6 gradient-text flex items-center">
-                            <i class="fas fa-graduation-cap mr-4 text-2xl"></i>Education
+                <div class="space-y-6">
+                    <div class="glass p-8 rounded-3xl hover-lift shadow-2xl">
+                        <h3 class="text-2xl font-bold mb-6 gradient-text flex items-center">
+                            <i class="fas fa-graduation-cap mr-4 text-xl"></i>Education
                         </h3>
-                        <div class="space-y-6">
+                        <div class="space-y-4">
                             <div class="flex items-start space-x-4">
                                 <div class="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <div>
-                                    <h4 class="text-xl font-bold text-white mb-1">MCA - Master of Computer Applications</h4>
+                                    <h4 class="text-lg font-bold text-white mb-1">MCA - Master of Computer Applications</h4>
                                     <p class="text-indigo-100 mb-1">Institute of Management Education, Sahibabad</p>
                                     <p class="text-slate-300">7.2 CGPA | 2023 - 2025</p>
                                 </div>
@@ -98,7 +124,7 @@
                             <div class="flex items-start space-x-4">
                                 <div class="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <div>
-                                    <h4 class="text-xl font-bold text-white mb-1">Diploma in Computer Science Engineering</h4>
+                                    <h4 class="text-lg font-bold text-white mb-1">Diploma in Computer Science Engineering</h4>
                                     <p class="text-indigo-100 mb-1">Guru Nanak Dev Institute of Technology</p>
                                     <p class="text-slate-300">8.2 CGPA | 2018 - 2021</p>
                                 </div>
@@ -106,7 +132,7 @@
                             <div class="flex items-start space-x-4">
                                 <div class="w-2 h-2 bg-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
                                 <div>
-                                    <h4 class="text-xl font-bold text-white mb-1">B.Com (Honours)</h4>
+                                    <h4 class="text-lg font-bold text-white mb-1">B.Com (Honours)</h4>
                                     <p class="text-indigo-100 mb-1">University of Delhi</p>
                                     <p class="text-slate-300">6.5 CGPA | 2015 - 2018</p>
                                 </div>
@@ -115,33 +141,33 @@
                     </div>
 
                     <!-- Achievements -->
-                    <div class="glass p-10 rounded-3xl hover-lift shadow-2xl grid grid-cols-2 gap-6">
+                    <div class="glass p-8 rounded-3xl hover-lift shadow-2xl grid grid-cols-2 gap-6">
                         <div class="text-center">
-                            <div class="text-4xl font-black gradient-text mb-4">400+</div>
-                            <div class="text-xl text-slate-300">LeetCode Solved</div>
+                            <div class="text-3xl font-black gradient-text mb-4">400+</div>
+                            <div class="text-lg text-slate-300">LeetCode Solved</div>
                             <div class="text-indigo-400 font-bold">Global Rank 200K</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-4xl font-black gradient-text mb-4">10,000</div>
-                            <div class="text-xl text-slate-300">Concurrent Users</div>
+                            <div class="text-3xl font-black gradient-text mb-4">10,000</div>
+                            <div class="text-lg text-slate-300">Concurrent Users</div>
                             <div class="text-green-400 font-bold">Server Capacity</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- About Text -->
-                <div class="glass p-12 rounded-3xl hover-lift shadow-2xl">
-                    <blockquote class="text-3xl font-light italic text-slate-200 mb-12 leading-relaxed">
+                <div class="glass p-10 rounded-3xl hover-lift shadow-2xl">
+                    <blockquote class="text-2xl font-light italic text-slate-200 mb-10 leading-relaxed">
                         "Experienced in building, deploying, and optimizing scalable applications using 
                         Spring Boot, REST APIs, Docker, AWS, and React. Strong track record of 
                         delivering robust solutions that drive business impact."
                     </blockquote>
-                    <div class="flex items-center space-x-6 pt-8 border-t border-white/20">
-                        <div class="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center text-2xl font-bold text-white shadow-xl">
+                    <div class="flex items-center space-x-6 pt-6 border-t border-white/20">
+                        <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center text-xl font-bold text-white shadow-xl">
                             ST
                         </div>
                         <div>
-                            <h4 class="text-2xl font-bold text-white">Saurabh Tiwari</h4>
+                            <h4 class="text-xl font-bold text-white">Saurabh Tiwari</h4>
                             <p class="text-indigo-300">Full Stack Developer | SDE Aspirant</p>
                         </div>
                     </div>
@@ -151,43 +177,43 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-32 px-8 bg-white/5 backdrop-blur-xl rounded-4xl mx-12 -mt-16 shadow-2xl">
+    <section id="skills" class="py-24 px-8 bg-white/5 backdrop-blur-xl rounded-4xl mx-12 -mt-12 shadow-2xl">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-24">
-                <h2 class="text-6xl lg:text-7xl font-black mb-8 gradient-text">Professional Skills</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-6xl font-black mb-8 gradient-text">Professional Skills</h2>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass p-10 rounded-3xl hover-lift text-center shadow-2xl">
-                    <i class="fas fa-server text-6xl text-indigo-400 mb-8"></i>
-                    <h3 class="text-3xl font-bold mb-6 gradient-text">Backend</h3>
-                    <div class="space-y-2 text-xl text-slate-300">
+                <div class="glass p-8 rounded-3xl hover-lift text-center shadow-2xl">
+                    <i class="fas fa-server text-5xl text-indigo-400 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-6 gradient-text">Backend</h3>
+                    <div class="space-y-2 text-lg text-slate-300">
                         <div>Java • Spring Boot • REST APIs</div>
                         <div>Microservices • Spring Security</div>
                         <div>OAuth2 • JWT Authentication</div>
                     </div>
                 </div>
-                <div class="glass p-10 rounded-3xl hover-lift text-center shadow-2xl">
-                    <i class="fab fa-react text-6xl text-cyan-400 mb-8"></i>
-                    <h3 class="text-3xl font-bold mb-6 gradient-text">Frontend</h3>
-                    <div class="space-y-2 text-xl text-slate-300">
+                <div class="glass p-8 rounded-3xl hover-lift text-center shadow-2xl">
+                    <i class="fab fa-react text-5xl text-cyan-400 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-6 gradient-text">Frontend</h3>
+                    <div class="space-y-2 text-lg text-slate-300">
                         <div>React.js • Tailwind CSS</div>
                         <div>Thymeleaf • HTML5 • CSS3</div>
                         <div>JavaScript • Daisy UI</div>
                     </div>
                 </div>
-                <div class="glass p-10 rounded-3xl hover-lift text-center shadow-2xl">
-                    <i class="fas fa-database text-6xl text-green-400 mb-8"></i>
-                    <h3 class="text-3xl font-bold mb-6 gradient-text">Database</h3>
-                    <div class="space-y-2 text-xl text-slate-300">
+                <div class="glass p-8 rounded-3xl hover-lift text-center shadow-2xl">
+                    <i class="fas fa-database text-5xl text-green-400 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-6 gradient-text">Database</h3>
+                    <div class="space-y-2 text-lg text-slate-300">
                         <div>MySQL • PostgreSQL</div>
                         <div>MongoDB • Cloudinary</div>
                         <div>Mailtrap Integration</div>
                     </div>
                 </div>
-                <div class="glass p-10 rounded-3xl hover-lift text-center shadow-2xl">
-                    <i class="fas fa-cloud text-6xl text-purple-400 mb-8"></i>
-                    <h3 class="text-3xl font-bold mb-6 gradient-text">DevOps</h3>
-                    <div class="space-y-2 text-xl text-slate-300">
+                <div class="glass p-8 rounded-3xl hover-lift text-center shadow-2xl">
+                    <i class="fas fa-cloud text-5xl text-purple-400 mb-6"></i>
+                    <h3 class="text-2xl font-bold mb-6 gradient-text">DevOps</h3>
+                    <div class="space-y-2 text-lg text-slate-300">
                         <div>AWS • Docker • Nginx</div>
                         <div>Git • GitHub Actions</div>
                         <div>Ollama/Phi LLM</div>
@@ -198,81 +224,83 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-32 px-8">
+    <section id="projects" class="py-24 px-8">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-24">
-                <h2 class="text-6xl lg:text-7xl font-black mb-8 gradient-text">Featured Projects</h2>
-                <p class="text-2xl text-slate-300">Production-ready full-stack applications showcasing real-world problem solving</p>
+            <div class="text-center mb-16">
+                <h2 class="text-5xl lg:text-6xl font-black mb-8 gradient-text">Featured Projects</h2>
+                <p class="text-xl text-slate-300">Production-ready full-stack applications showcasing real-world problem solving</p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Task Board Lite -->
-                <div class="group glass p-10 rounded-3xl hover-lift shadow-2xl hover:shadow-indigo-500/30 transition-all duration-700 cursor-pointer border border-white/20">
-                    <div class="w-full h-52 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-3xl mb-8 group-hover:scale-105 transition-all duration-500 flex items-center justify-center">
-                        <i class="fas fa-tasks text-6xl text-white/50"></i>
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Project 1: Task Board Lite -->
+                <div class="group glass p-8 rounded-3xl hover-lift shadow-2xl hover:shadow-indigo-500/30 transition-all duration-700 cursor-pointer border border-white/20">
+                    <div class="w-full h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-3xl mb-6 group-hover:scale-105 transition-all duration-500 flex items-center justify-center">
+                        <i class="fas fa-tasks text-5xl text-white/50"></i>
                     </div>
-                    <h3 class="text-4xl font-black mb-6 gradient-text group-hover:translate-x-4 transition-transform">Task Board Lite</h3>
-                    <p class="text-xl text-slate-300 mb-8 leading-relaxed">Modern drag & drop task management application with real-time collaboration features. Latest project showcasing React + Spring Boot expertise.</p>
+                    <h3 class="text-3xl font-black mb-4 gradient-text group-hover:translate-x-2 transition-transform">Task Board Lite</h3>
+                    <p class="text-lg text-slate-300 mb-6 leading-relaxed">Modern drag & drop task management with real-time collaboration. React + Spring Boot expertise.</p>
                     <div class="flex items-center justify-between">
                         <a href="https://github.com/tiwarisaurabh786/Task_Board_Lite/" target="_blank" 
-                           class="bg-gradient-to-r from-indigo-500 to-purple-600 px-8 py-4 rounded-2xl font-bold hover:shadow-2xl transition-all group-hover:translate-x-2">
+                           class="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-3 rounded-2xl font-bold hover:shadow-2xl transition-all group-hover:translate-x-2">
                             <i class="fab fa-github mr-2"></i>Live Repo
                         </a>
-                        <div class="text-2xl text-indigo-400 font-bold">⭐ Latest</div>
+                        <div class="text-xl text-indigo-400 font-bold">⭐ Latest</div>
                     </div>
                 </div>
 
-                <!-- AI Resume Builder -->
-                <div class="group glass p-10 rounded-3xl hover-lift shadow-2xl hover:shadow-emerald-500/30 transition-all duration-700 cursor-pointer border border-white/20">
-                    <div class="w-full h-52 bg-gradient-to-br from-emerald-500/20 to-green-500/20 rounded-3xl mb-8 group-hover:scale-105 transition-all duration-500 flex items-center justify-center">
-                        <i class="fas fa-robot text-6xl text-white/50"></i>
+                <!-- Project 2: AI Resume Builder -->
+                <div class="group glass p-8 rounded-3xl hover-lift shadow-2xl hover:shadow-emerald-500/30 transition-all duration-700 cursor-pointer border border-white/20">
+                    <div class="w-full h-48 bg-gradient-to-br from-emerald-500/20 to-green-500/20 rounded-3xl mb-6 group-hover:scale-105 transition-all duration-500 flex items-center justify-center">
+                        <i class="fas fa-robot text-5xl text-white/50"></i>
                     </div>
-                    <h3 class="text-4xl font-black mb-6 gradient-text group-hover:translate-x-4 transition-transform">AI Resume Builder</h3>
-                    <p class="text-xl text-slate-300 mb-8 leading-relaxed">AI-powered resume generator using Spring Boot + Ollama LLM. Improved resume accuracy by 30% and reduced user errors by 20% with ATS-friendly output.</p>
+                    <h3 class="text-3xl font-black mb-4 gradient-text group-hover:translate-x-2 transition-transform">AI Resume Builder</h3>
+                    <p class="text-lg text-slate-300 mb-6 leading-relaxed">AI-powered resume generator using Spring Boot + Ollama LLM. ATS-friendly output.</p>
                     <a href="https://github.com/tiwarisaurabh786" target="_blank" 
-                       class="bg-gradient-to-r from-emerald-500 to-green-600 px-8 py-4 rounded-2xl font-bold hover:shadow-2xl transition-all w-full text-center">
+                       class="bg-gradient-to-r from-emerald-500 to-green-600 px-6 py-3 rounded-2xl font-bold hover:shadow-2xl transition-all w-full text-center">
                         <i class="fab fa-github mr-2"></i>View Project
                     </a>
                 </div>
 
-                <!-- Student Event Management - Featured -->
-                <div class="md:col-span-2 group glass p-12 rounded-4xl hover-lift shadow-2xl hover:shadow-cyan-500/40 transition-all duration-700 cursor-pointer border-2 border-white/30">
-                    <div class="grid lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <div class="w-full h-80 bg-gradient-to-br from-cyan-500/30 to-blue-500/30 rounded-3xl mb-8 group-hover:scale-105 transition-all duration-500 flex items-center justify-center">
-                                <i class="fas fa-calendar-alt text-8xl text-white/60"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="text-5xl font-black mb-8 gradient-text group-hover:translate-x-4 transition-transform">Student Event Management System</h3>
-                            <p class="text-2xl text-slate-200 mb-10 leading-relaxed">Complete full-stack event platform with real-time seat tracking, advanced search & filtering, role-based access (Admin/Student), and responsive UI across all devices.</p>
-                            <div class="flex flex-wrap gap-4">
-                                <span class="bg-indigo-500/30 backdrop-blur-sm px-6 py-3 rounded-2xl text-xl font-bold border border-indigo-400/50">Spring Boot</span>
-                                <span class="bg-cyan-500/30 backdrop-blur-sm px-6 py-3 rounded-2xl text-xl font-bold border border-cyan-400/50">React</span>
-                                <span class="bg-green-500/30 backdrop-blur-sm px-6 py-3 rounded-2xl text-xl font-bold border border-green-400/50">PostgreSQL</span>
-                            </div>
-                            <div class="flex gap-4 mt-8">
-                                <a href="https://github.com/tiwarisaurabh786" target="_blank" 
-                                   class="bg-gradient-to-r from-cyan-500 to-blue-600 px-10 py-5 rounded-3xl font-bold text-xl hover:shadow-2xl transition-all flex-1 text-center">
-                                    <i class="fab fa-github mr-3"></i>GitHub Repo
-                                </a>
-                                <div class="bg-white/20 backdrop-blur-sm px-8 py-5 rounded-3xl font-bold text-xl text-slate-200 min-w-[200px] text-center">
-                                    Production Ready
-                                </div>
-                            </div>
-                        </div>
+                <!-- Project 3: Student Event Management -->
+                <div class="group glass p-8 rounded-3xl hover-lift shadow-2xl hover:shadow-cyan-500/30 transition-all duration-700 cursor-pointer border border-white/20 md:col-span-2">
+                    <div class="w-full h-48 bg-gradient-to-br from-cyan-500/30 to-blue-500/30 rounded-3xl mb-6 group-hover:scale-105 transition-all duration-500 flex items-center justify-center">
+                        <i class="fas fa-calendar-alt text-6xl text-white/60"></i>
                     </div>
+                    <h3 class="text-3xl font-black mb-4 gradient-text group-hover:translate-x-2 transition-transform">Student Event Management System</h3>
+                    <p class="text-lg text-slate-200 mb-6 leading-relaxed">Complete full-stack event platform with real-time seat tracking, role-based access, and responsive UI.</p>
+                    <div class="flex flex-wrap gap-3 mb-4">
+                        <span class="bg-indigo-500/30 backdrop-blur-sm px-4 py-2 rounded-xl text-lg font-bold border border-indigo-400/50">Spring Boot</span>
+                        <span class="bg-cyan-500/30 backdrop-blur-sm px-4 py-2 rounded-xl text-lg font-bold border border-cyan-400/50">React</span>
+                        <span class="bg-green-500/30 backdrop-blur-sm px-4 py-2 rounded-xl text-lg font-bold border border-green-400/50">PostgreSQL</span>
+                    </div>
+                    <a href="https://github.com/tiwarisaurabh786" target="_blank" 
+                       class="bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 rounded-2xl font-bold text-lg hover:shadow-2xl transition-all w-full text-center">
+                        <i class="fab fa-github mr-3"></i>GitHub Repo
+                    </a>
                 </div>
 
-                <!-- Smart Contact Manager -->
-                <div class="group glass p-10 rounded-3xl hover-lift shadow-2xl hover:shadow-orange-500/30 transition-all duration-700 cursor-pointer border border-white/20">
-                    <div class="w-full h-52 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-3xl mb-8 group-hover:scale-105 transition-all duration-500 flex items-center justify-center">
-                        <i class="fas fa-address-book text-6xl text-white/50"></i>
+                <!-- Project 4: Smart Contact Manager -->
+                <div class="group glass p-8 rounded-3xl hover-lift shadow-2xl hover:shadow-orange-500/30 transition-all duration-700 cursor-pointer border border-white/20">
+                    <div class="w-full h-48 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-3xl mb-6 group-hover:scale-105 transition-all duration-500 flex items-center justify-center">
+                        <i class="fas fa-address-book text-5xl text-white/50"></i>
                     </div>
-                    <h3 class="text-4xl font-black mb-6 gradient-text group-hover:translate-x-4 transition-transform">Smart Contact Manager</h3>
-                    <p class="text-xl text-slate-300 mb-8 leading-relaxed">Secure contact management platform with OAuth2 authentication, Cloudinary storage, Mailtrap notifications, and enhanced data reliability.</p>
+                    <h3 class="text-3xl font-black mb-4 gradient-text group-hover:translate-x-2 transition-transform">Smart Contact Manager</h3>
+                    <p class="text-lg text-slate-300 mb-6 leading-relaxed">Secure contact platform with OAuth2, Cloudinary storage, Mailtrap notifications.</p>
                     <a href="https://github.com/tiwarisaurabh786" target="_blank" 
-                       class="bg-gradient-to-r from-orange-500 to-yellow-600 px-8 py-4 rounded-2xl font-bold hover:shadow-2xl transition-all w-full text-center">
+                       class="bg-gradient-to-r from-orange-500 to-yellow-600 px-6 py-3 rounded-2xl font-bold hover:shadow-2xl transition-all w-full text-center">
+                        <i class="fab fa-github mr-2"></i>View Project
+                    </a>
+                </div>
+
+                <!-- Project 5: E-Commerce Dashboard -->
+                <div class="group glass p-8 rounded-3xl hover-lift shadow-2xl hover:shadow-purple-500/30 transition-all duration-700 cursor-pointer border border-white/20">
+                    <div class="w-full h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-3xl mb-6 group-hover:scale-105 transition-all duration-500 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-5xl text-white/50"></i>
+                    </div>
+                    <h3 class="text-3xl font-black mb-4 gradient-text group-hover:translate-x-2 transition-transform">E-Commerce Dashboard</h3>
+                    <p class="text-lg text-slate-300 mb-6 leading-relaxed">Real-time analytics dashboard with advanced filtering, charts, and admin controls.</p>
+                    <a href="https://github.com/tiwarisaurabh786" target="_blank" 
+                       class="bg-gradient-to-r from-purple-500 to-pink-600 px-6 py-3 rounded-2xl font-bold hover:shadow-2xl transition-all w-full text-center">
                         <i class="fab fa-github mr-2"></i>View Project
                     </a>
                 </div>
@@ -281,40 +309,40 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-32 px-8">
+    <section id="contact" class="py-24 px-8">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-6xl lg:text-7xl font-black mb-12 gradient-text">Let's Connect</h2>
-            <div class="glass p-20 rounded-4xl shadow-2xl border border-white/30 backdrop-blur-xl max-w-3xl mx-auto mb-16">
-                <div class="grid md:grid-cols-2 gap-16 text-2xl">
-                    <div class="space-y-8">
+            <h2 class="text-5xl lg:text-6xl font-black mb-12 gradient-text">Let's Connect</h2>
+            <div class="glass p-16 rounded-4xl shadow-2xl border border-white/30 backdrop-blur-xl max-w-3xl mx-auto mb-12">
+                <div class="grid md:grid-cols-2 gap-12 text-xl">
+                    <div class="space-y-6">
                         <div class="flex items-center justify-center space-x-6 p-6 bg-white/10 rounded-3xl">
-                            <i class="fas fa-envelope text-4xl text-indigo-400"></i>
+                            <i class="fas fa-envelope text-3xl text-indigo-400"></i>
                             <div class="text-left">
                                 <div class="font-bold text-white mb-2">Email</div>
-                                <a href="mailto:tiwarisoravvkagmail.com" class="text-indigo-200 hover:text-white font-semibold text-xl block">tiwarisoravvkagmail.com</a>
+                                <a href="mailto:tiwarisoravvkagmail.com" class="text-indigo-200 hover:text-white font-semibold text-lg block">tiwarisoravvkagmail.com</a>
                             </div>
                         </div>
                         <div class="flex items-center justify-center space-x-6 p-6 bg-white/10 rounded-3xl">
-                            <i class="fas fa-phone text-4xl text-green-400"></i>
+                            <i class="fas fa-phone text-3xl text-green-400"></i>
                             <div class="text-left">
                                 <div class="font-bold text-white mb-2">Phone</div>
-                                <a href="tel:+919891496952" class="text-indigo-200 hover:text-white font-semibold text-xl block">+91 98914 96952</a>
+                                <a href="tel:+919891496952" class="text-indigo-200 hover:text-white font-semibold text-lg block">+91 98914 96952</a>
                             </div>
                         </div>
                     </div>
-                    <div class="flex flex-col items-center justify-center space-y-8 pt-8 md:pt-0 md:border-l-2 md:border-white/20 md:pl-16">
-                        <div class="text-5xl space-x-12">
-                            <a href="https://github.com/tiwarisaurabh786" class="text-indigo-400 hover:text-white p-6 rounded-3xl hover:bg-white/20 transition-all duration-300 hover:scale-110" target="_blank">
+                    <div class="flex flex-col items-center justify-center space-y-6 pt-8 md:pt-0 md:border-l-2 md:border-white/20 md:pl-12">
+                        <div class="text-4xl space-x-10">
+                            <a href="https://github.com/tiwarisaurabh786" class="text-indigo-400 hover:text-white p-5 rounded-3xl hover:bg-white/20 transition-all duration-300 hover:scale-110" target="_blank">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="https://leetcode.com/tiwarisaurabh786/" class="text-yellow-400 hover:text-white p-6 rounded-3xl hover:bg-white/20 transition-all duration-300 hover:scale-110" target="_blank">
+                            <a href="https://leetcode.com/tiwarisaurabh786/" class="text-yellow-400 hover:text-white p-5 rounded-3xl hover:bg-white/20 transition-all duration-300 hover:scale-110" target="_blank">
                                 <i class="fab fa-leetcode"></i>
                             </a>
-                            <a href="https://linkedin.com/in/tiwarisaurabh786" class="text-blue-400 hover:text-white p-6 rounded-3xl hover:bg-white/20 transition-all duration-300 hover:scale-110" target="_blank">
+                            <a href="https://linkedin.com/in/tiwarisaurabh786" class="text-blue-400 hover:text-white p-5 rounded-3xl hover:bg-white/20 transition-all duration-300 hover:scale-110" target="_blank">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </div>
-                        <div class="text-xl font-bold text-indigo-300 tracking-wide">
+                        <div class="text-lg font-bold text-indigo-300 tracking-wide">
                             Open to Full Stack Developer, SDE-1, Backend & Cloud Development roles
                         </div>
                     </div>
@@ -323,9 +351,35 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/20 mt-32 pt-12 pb-8 text-center text-slate-400">
-        <p>&copy; 2026 Saurabh Tiwari. Built with ❤️ for Software Engineering excellence. 🚀</p>
+    <!-- Footer with Recruiter Contact -->
+    <footer class="glass backdrop-blur-xl border-t border-white/20 mt-16 pt-12 pb-8 text-center text-slate-400">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-2xl font-bold mb-6 gradient-text">Hiring Managers & Recruiters</div>
+            <div class="grid md:grid-cols-3 gap-8 mb-8 max-w-2xl mx-auto">
+                <div class="p-6 bg-white/10 rounded-2xl">
+                    <i class="fas fa-briefcase text-3xl text-indigo-400 mb-4 block"></i>
+                    <div class="font-bold text-white mb-1">Fast Learner</div>
+                    <div class="text-sm">Production-ready code from day 1</div>
+                </div>
+                <div class="p-6 bg-white/10 rounded-2xl">
+                    <i class="fas fa-rocket text-3xl text-green-400 mb-4 block"></i>
+                    <div class="font-bold text-white mb-1">Scalable Solutions</div>
+                    <div class="text-sm">10K+ concurrent users handled</div>
+                </div>
+                <div class="p-6 bg-white/10 rounded-2xl">
+                    <i class="fas fa-users text-3xl text-purple-400 mb-4 block"></i>
+                    <div class="font-bold text-white mb-1">Team Player</div>
+                    <div class="text-sm">Collaborative & proactive</div>
+                </div>
+            </div>
+            <div class="border-t border-white/20 pt-6">
+                <p class="text-lg mb-2">Available for Full Time / Internship | Immediate Joining</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm">
+                    <span>&copy; 2026 Saurabh Tiwari. Built with ❤️ for Software Engineering excellence.</span>
+                    <a href="mailto:tiwarisoravvkagmail.com" class="font-bold text-indigo-300 hover:text-white transition-colors">📧 Quick Chat</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -369,6 +423,12 @@
                 navbar.style.background = 'rgba(255, 255, 255, 0.1)';
             }
         });
+
+        // Mobile menu toggle (if needed)
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav ul');
+            nav.classList.toggle('hidden');
+        }
     </script>
 </body>
 </html>
